@@ -9,6 +9,7 @@ import reducers from "./reducers";
 
 import PostsIndex from "./components/posts_index";
 import PostsNew from "./components/posts_new";
+import PostsShow from "./components/posts_show";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -20,8 +21,9 @@ function main() {
     <Provider store={createStoreWithMiddleware(reducers)}>
       <BrowserRouter>
         <div className="container">
-          <Route exact path="/" component={PostsIndex} />
           <Route path="/posts/new" component={PostsNew} />
+          <Route path="/posts/:id" component={PostsShow} />
+          <Route exact path="/" component={PostsIndex} />
         </div>
       </BrowserRouter>
     </Provider>,
